@@ -1,5 +1,4 @@
 *.webm
-*.meta
 merged.csv.meta
 .~lock.merged.csv#
 predict_*
