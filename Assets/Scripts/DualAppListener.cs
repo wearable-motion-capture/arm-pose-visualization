@@ -18,6 +18,7 @@ public class DualAppListener : MonoBehaviour
     [SerializeField] private Material mcPredMaterial;
     [SerializeField] private Mesh mcPredMesh;
     [SerializeField] private GameObject uArmOrigin;
+    [SerializeField] private int port = 50003;
 
     private byte[] _msgTail;
     private ComputeBuffer _positionsBuffer;
@@ -44,7 +45,6 @@ public class DualAppListener : MonoBehaviour
 
     private void UDPListener()
     {
-        var port = 50003;
         //Creates a UdpClient for reading incoming data.
         _udpClient = new UdpClient(port);
         //Creates an IPEndPoint to record the IP Address and port number of the sender.
