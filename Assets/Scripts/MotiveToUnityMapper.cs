@@ -14,6 +14,10 @@ public class MotiveToUnityMapper : MonoBehaviour
     private GameObject _rootObj;
     private string _skeletonName;
     
+    public GameObject leftUpperArm;
+    public GameObject leftLowerArm;
+    public GameObject leftHand;
+    
     /**
     * Parse the input moCapSkeletonXML file and creates a Unity skeleton accordingly.
      * It parses the skeleton name, stored bone IDs, their hierarchy and offsets. The skeleton uses the public
@@ -68,6 +72,22 @@ public class MotiveToUnityMapper : MonoBehaviour
                 float.Parse(bone.Item2[1]),
                 float.Parse(bone.Item2[2]));
         }
+    }
+    
+    
+    private void LateUpdate()
+    {
+        var uat = _boneMap["LeftUpperArm"].transform;
+        var lat = _boneMap["LeftLowerArm"].transform;
+        var ht = _boneMap["LeftHand"].transform;
+
+        // leftUpperArm.transform.SetPositionAndRotation(uat.position, uat.rotation * Quaternion.Euler(0, 0, 90));
+        // leftLowerArm.transform.SetPositionAndRotation(lat.position, lat.rotation * Quaternion.Euler(0, 0, 90));
+        // leftHand.transform.SetPositionAndRotation(ht.position, ht.rotation * Quaternion.Euler(0, 0, 90));
+
+        leftUpperArm.transform.rotation = (uat.rotation * Quaternion.Euler(0, 0, 90));
+        leftLowerArm.transform.rotation = (lat.rotation * Quaternion.Euler(0, 0, 90));
+        leftHand.transform.rotation = (ht.rotation * Quaternion.Euler(0, 0, 90));
     }
     
     /**
