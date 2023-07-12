@@ -28,7 +28,8 @@ public class DualAppListener : MonoBehaviour
     private Thread _udpListenerThread;
     private UdpClient _udpClient;
     private bool _pause;
-    
+
+    private Quaternion _handRot;
     private Vector3 _handPos;
     private Quaternion _larmRot;
     private Vector3 _larmPos;
@@ -63,41 +64,47 @@ public class DualAppListener : MonoBehaviour
             var msg = _udpClient.Receive(ref remoteIpEndPoint);
 
             // the basic message
-            _handPos = new Vector3(
-                BitConverter.ToSingle(msg, 0),
+            _handRot = new Quaternion(
                 BitConverter.ToSingle(msg, 4),
-                BitConverter.ToSingle(msg, 8)
+                BitConverter.ToSingle(msg, 8),
+                BitConverter.ToSingle(msg, 12),
+                BitConverter.ToSingle(msg, 0)
             );
-            _larmRot = new Quaternion(
+            _handPos = new Vector3(
                 BitConverter.ToSingle(msg, 16),
                 BitConverter.ToSingle(msg, 20),
-                BitConverter.ToSingle(msg, 24),
-                BitConverter.ToSingle(msg, 12)
+                BitConverter.ToSingle(msg, 24)
+            );
+            _larmRot = new Quaternion(
+                BitConverter.ToSingle(msg, 32),
+                BitConverter.ToSingle(msg, 36),
+                BitConverter.ToSingle(msg, 40),
+                BitConverter.ToSingle(msg, 28)
             );
             _larmPos = new Vector3(
-                BitConverter.ToSingle(msg, 28),
-                BitConverter.ToSingle(msg, 32),
-                BitConverter.ToSingle(msg, 36)
-            );
-            _uarmRot = new Quaternion(
                 BitConverter.ToSingle(msg, 44),
                 BitConverter.ToSingle(msg, 48),
-                BitConverter.ToSingle(msg, 52),
-                BitConverter.ToSingle(msg, 40)
+                BitConverter.ToSingle(msg, 52)
+            );
+            _uarmRot = new Quaternion(
+                BitConverter.ToSingle(msg, 60),
+                BitConverter.ToSingle(msg, 64),
+                BitConverter.ToSingle(msg, 68),
+                BitConverter.ToSingle(msg, 56)
             );
 
             // if the message is longer, we have additional monte carlo predictions
             // store tail to pass to compute shader
-            if (msg.Length > 56)
-                _msgTail = msg.Skip(56).ToArray();
+            if (msg.Length > 72)
+                _msgTail = msg.Skip(72).ToArray();
         }
     }
-    
+
     public void MoveBoneMap(Dictionary<string, GameObject> boneMap)
     {
         var uaPos = uArmOrigin.transform.position;
         boneMap["LeftHand"].transform.SetPositionAndRotation(
-            _handPos + uaPos, _larmRot
+            _handPos + uaPos, _handRot
         );
         boneMap["LeftLowerArm"].transform.SetPositionAndRotation(
             _larmPos + uaPos, _larmRot
@@ -116,21 +123,21 @@ public class DualAppListener : MonoBehaviour
                           _positionsBuffer.count + " (" + _cubeCount +
                           " cubes)");
             }
-        
+
             // write positions to buffer
             _positionsBuffer.SetData(_msgTail);
-        
+
             // we add the shoulder position to predicted positions on the GPU 
             mcPredMaterial.SetVector(UarmId, uaPos);
             mcPredMaterial.SetVector(LarmId, _larmPos);
             mcPredMaterial.SetVector(HandId, _handPos);
             mcPredMaterial.SetBuffer(PositionsId, _positionsBuffer);
-        
+
             // instantiate cubes 
             Graphics.DrawMeshInstancedProcedural(
                 mcPredMesh, 0, mcPredMaterial, _bounds, _cubeCount
             );
-        } 
+        }
     }
 
     private void Update()
