@@ -394,8 +394,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
   mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  uArmOrigin: {fileID: 1044501168}
+  upperArm: {fileID: 0}
   port: 50005
+  leftHandMode: 1
 --- !u!114 &785076248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -409,7 +410,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonMapper: {fileID: 785076246}
-  swListener: {fileID: 785076247}
+  swListener: []
 --- !u!4 &785076249
 Transform:
   m_ObjectHideFlags: 0
@@ -424,71 +425,8 @@ Transform:
   m_Children:
   - {fileID: 1044501166}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &830520132
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 830520136}
-  - component: {fileID: 830520138}
-  - component: {fileID: 830520137}
-  m_Layer: 0
-  m_Name: RightSwController
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &830520136
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830520132}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.24753904, y: -0.03414166, z: 0.6199039}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &830520137
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830520132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5785fd7cefab6c47abecac681ec9e62, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skeletonMapper: {fileID: 377602335}
-  swListener: {fileID: 830520138}
---- !u!114 &830520138
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 830520132}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c8bd505a8875085aca2ee9081cb3cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
-  mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  uArmOrigin: {fileID: 1124653110}
-  port: 50004
 --- !u!1 &893390074
 GameObject:
   m_ObjectHideFlags: 0
@@ -665,7 +603,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &961004393
 MonoBehaviour:
@@ -822,6 +760,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Armature
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5866666021909216657, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -964,7 +906,7 @@ Transform:
   m_Children:
   - {fileID: 1515441454}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!1 &1336340261
 GameObject:
@@ -975,10 +917,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336340264}
-  - component: {fileID: 1336340267}
   - component: {fileID: 1336340265}
+  - component: {fileID: 1336340267}
+  - component: {fileID: 1336340268}
   m_Layer: 0
-  m_Name: LeftSwController
+  m_Name: WearableController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1012,7 +955,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonMapper: {fileID: 377602335}
-  swListener: {fileID: 1336340267}
+  swListener:
+  - {fileID: 1336340267}
+  - {fileID: 1336340268}
 --- !u!114 &1336340267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1027,8 +972,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
   mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  uArmOrigin: {fileID: 1124653108}
+  upperArm: {fileID: 1124653108}
   port: 50003
+  leftHandMode: 1
+--- !u!114 &1336340268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336340261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cf8beff0f6d85dfbf157773d963a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
+  mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  upperArm: {fileID: 1124653110}
+  port: 50004
+  leftHandMode: 0
 --- !u!1001 &1366923502
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1342,7 +1305,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonMapper: {fileID: 1718677980}
-  swListener: {fileID: 1718677981}
+  swListener: []
 --- !u!114 &1718677980
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1374,8 +1337,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
   mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  uArmOrigin: {fileID: 1366923508}
+  upperArm: {fileID: 0}
   port: 50003
+  leftHandMode: 1
 --- !u!4 &1718677982
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,5 +1356,5 @@ Transform:
   - {fileID: 632225112}
   - {fileID: 1366923506}
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

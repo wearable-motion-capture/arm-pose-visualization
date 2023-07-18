@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SkeletonMapper
 {
-    public class MotiveToArmPose : Basis
+    public class WearableToLeftArmPose : Basis
     {
         public GameObject leftUpperArm;
         public GameObject leftLowerArm;

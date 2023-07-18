@@ -18,22 +18,22 @@ namespace SkeletonMapper
         private string _skeletonName;
 
         /**
-    * Parse the input moCapSkeletonXML file and creates a Unity skeleton accordingly.
-     * It parses the skeleton name, stored bone IDs, their hierarchy and offsets. The skeleton uses the public
-     * _skeletonRootObj as its root object. All bones are also stored in the _boneObjectMap with their ID and GameObject
-     * for later lookup.
-    */
+        * Parse the input moCapSkeletonXML file and creates a Unity skeleton accordingly.
+         * It parses the skeleton name, stored bone IDs, their hierarchy and offsets. The skeleton uses the public
+         * _skeletonRootObj as its root object. All bones are also stored in the _boneObjectMap with their ID and GameObject
+         * for later lookup.
+        */
         private void Start()
         {
             ParseXMLToUnityHierarchy();
         }
 
         /**
-    * This function parses the input moCapSkeletonXML file and creates a Unity skeleton accordingly.
-     * It parses the skeleton name, stored bone IDs, their hierarchy and offsets. The skeleton uses the public
-     * _skeletonRootObj as its root object. All bones are also stored in the _boneObjectMap with their ID and GameObject
-     * for later lookup.
-    */
+        * This function parses the input moCapSkeletonXML file and creates a Unity skeleton accordingly.
+         * It parses the skeleton name, stored bone IDs, their hierarchy and offsets. The skeleton uses the public
+         * _skeletonRootObj as its root object. All bones are also stored in the _boneObjectMap with their ID and GameObject
+         * for later lookup.
+        */
         protected void ParseXMLToUnityHierarchy()
         {
             var moCapSkeleton = XDocument.Parse(motiveSkeletonXML.text);
@@ -85,9 +85,9 @@ namespace SkeletonMapper
         }
 
         /**
-     * IDs in the XML of Motive are distinct from the XML or Mechanim IDs.
-     * Use this to map from CSV ID to Unity Mechanim ID.
-     */
+         * IDs in the XML of Motive are distinct from the XML or Mechanim IDs.
+         * Use this to map from CSV ID to Unity Mechanim ID.
+         */
         public static string XmlIDtoMecanimID(string xmlId)
         {
             var dict = new Dictionary<string, string>()

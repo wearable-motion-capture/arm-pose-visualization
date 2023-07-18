@@ -17,8 +17,9 @@ public class DualAppListener : MonoBehaviour
 
     [SerializeField] private Material mcPredMaterial;
     [SerializeField] private Mesh mcPredMesh;
-    [SerializeField] private GameObject uArmOrigin;
+    [SerializeField] private GameObject upperArm;
     [SerializeField] private int port = 50003;
+    [SerializeField] private bool leftHandMode = true;
 
     private byte[] _msgTail;
     private ComputeBuffer _positionsBuffer;
@@ -102,14 +103,33 @@ public class DualAppListener : MonoBehaviour
 
     public void MoveBoneMap(Dictionary<string, GameObject> boneMap)
     {
-        var uaPos = uArmOrigin.transform.position;
-        boneMap["LeftHand"].transform.SetPositionAndRotation(
-            _handPos + uaPos, _handRot
-        );
-        boneMap["LeftLowerArm"].transform.SetPositionAndRotation(
-            _larmPos + uaPos, _larmRot
-        );
-        boneMap["LeftUpperArm"].transform.rotation = _uarmRot;
+        var uaPos = upperArm.transform.position;
+
+        if (leftHandMode)
+        {
+            boneMap["LeftHand"].transform.SetPositionAndRotation(
+                _handPos + uaPos, _handRot
+            );
+            boneMap["LeftLowerArm"].transform.SetPositionAndRotation(
+                _larmPos + uaPos, _larmRot
+            );
+            boneMap["LeftUpperArm"].transform.SetPositionAndRotation(
+                uaPos, _uarmRot
+            );
+        }
+        else
+        {
+            boneMap["RightHand"].transform.SetPositionAndRotation(
+                _handPos + uaPos, _handRot
+            );
+            boneMap["RightLowerArm"].transform.SetPositionAndRotation(
+                _larmPos + uaPos, _larmRot
+            );
+            boneMap["RightUpperArm"].transform.SetPositionAndRotation(
+                uaPos, _uarmRot
+            );
+        }
+
 
         // now the positions buffer for our monte carlo hand and larm positions
         if (_msgTail is not null)
