@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SkeletonMapper
 {
-    public class SkeletonToArmatureBothArms : Basis
+    public class WearableToBothArms : Basis
     {
         [SerializeField] private GameObject leftUpperArm;
         [SerializeField] private GameObject leftLowerArm;

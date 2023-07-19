@@ -1,8 +1,11 @@
+using System.Collections.Generic;
+using System.Linq;
+using System.Xml.Linq;
 using UnityEngine;
 
 namespace SkeletonMapper
 {
-    public class WearableToLeftArmPose : Basis
+    public class MotiveToLeftArmPose : Basis
     {
         public GameObject leftUpperArm;
         public GameObject leftLowerArm;
@@ -14,10 +17,9 @@ namespace SkeletonMapper
             var lat = BoneMap["LeftLowerArm"].transform;
             var ht = BoneMap["LeftHand"].transform;
 
-            var leftRot = Quaternion.Euler(0, 90, 90);
-            leftUpperArm.transform.SetPositionAndRotation(uat.position, uat.rotation * leftRot);
-            leftLowerArm.transform.SetPositionAndRotation(lat.position, lat.rotation * leftRot);
-            leftHand.transform.SetPositionAndRotation(ht.position, ht.rotation * leftRot);
+            leftUpperArm.transform.SetPositionAndRotation(uat.position, uat.rotation * Quaternion.Euler(0, 0, 90));
+            leftLowerArm.transform.SetPositionAndRotation(lat.position, lat.rotation * Quaternion.Euler(0, 0, 90));
+            leftHand.transform.SetPositionAndRotation(ht.position, ht.rotation * Quaternion.Euler(0, 0, 90));
 
             // leftUpperArm.transform.rotation = uat.rotation * Quaternion.Euler(0, 0, 90);
             // leftLowerArm.transform.rotation = lat.rotation * Quaternion.Euler(0, 0, 90);

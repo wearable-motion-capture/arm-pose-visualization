@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18031411, g: 0.22575049, b: 0.3069412, a: 1}
+  m_IndirectSpecularColor: {r: 0.17975803, g: 0.22507417, b: 0.3065729, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 785076249}
   - component: {fileID: 785076248}
   - component: {fileID: 785076247}
-  - component: {fileID: 785076246}
+  - component: {fileID: 785076250}
   m_Layer: 0
   m_Name: GtController
   m_TagString: Untagged
@@ -152,23 +152,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &785076246
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 785076245}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624c659a37d2551e8b08ee03012314a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destGameObject: {fileID: 96349527}
-  motiveSkeletonXML: {fileID: 4900000, guid: 35b9f827701602b1caf9ec99bc504b29, type: 3}
-  leftUpperArm: {fileID: 896778951}
-  leftLowerArm: {fileID: 1782585432}
-  leftHand: {fileID: 2118452084}
 --- !u!114 &785076247
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -183,8 +166,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
   mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  uArmOrigin: {fileID: 896778951}
+  upperArm: {fileID: 896778951}
   port: 50005
+  leftHandMode: 1
 --- !u!114 &785076248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,8 +181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ced87d890ee00ba85fadd0a310a0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonMapper: {fileID: 785076246}
-  swListener: {fileID: 785076247}
+  skeletonMapper: {fileID: 785076250}
+  swListener:
+  - {fileID: 785076247}
 --- !u!4 &785076249
 Transform:
   m_ObjectHideFlags: 0
@@ -215,6 +200,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &785076250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 785076245}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2a4a298e21a2c1938bf839f4cbca3777, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destGameObject: {fileID: 96349527}
+  motiveSkeletonXML: {fileID: 4900000, guid: 35b9f827701602b1caf9ec99bc504b29, type: 3}
+  leftUpperArm: {fileID: 896778951}
+  leftLowerArm: {fileID: 1782585432}
+  leftHand: {fileID: 2118452084}
 --- !u!1 &893390074
 GameObject:
   m_ObjectHideFlags: 0
@@ -301,14 +303,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 893390074}
-  m_LocalRotation: {x: -0.12861781, y: -0.6396753, z: 0.47992784, w: -0.58646584}
+  m_LocalRotation: {x: -0.32442603, y: -0.8309935, z: 0.37632573, w: -0.25015306}
   m_LocalPosition: {x: -2, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 49.894, y: -283.332, z: -38.2}
+  m_LocalEulerAnglesHint: {x: 51.977, y: -196.173, z: 34.728}
 --- !u!1 &896778951 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -6387506612370719953, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
@@ -501,9 +503,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1336340264}
+  - component: {fileID: 1336340265}
   - component: {fileID: 1336340267}
   - component: {fileID: 1336340266}
-  - component: {fileID: 1336340265}
   m_Layer: 0
   m_Name: SwController
   m_TagString: Untagged
@@ -540,7 +542,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonMapper: {fileID: 1336340266}
-  swListener: {fileID: 1336340267}
+  swListener:
+  - {fileID: 1336340267}
 --- !u!114 &1336340266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,8 +575,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
   mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
-  uArmOrigin: {fileID: 1711056790}
+  upperArm: {fileID: 1711056790}
   port: 50003
+  leftHandMode: 1
 --- !u!1 &1607329434
 GameObject:
   m_ObjectHideFlags: 0
@@ -678,11 +682,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
       propertyPath: m_LocalPosition.y
@@ -698,7 +702,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
       propertyPath: m_LocalRotation.y
