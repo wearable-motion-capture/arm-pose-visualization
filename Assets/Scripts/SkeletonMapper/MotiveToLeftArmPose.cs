@@ -17,9 +17,10 @@ namespace SkeletonMapper
             var lat = BoneMap["LeftLowerArm"].transform;
             var ht = BoneMap["LeftHand"].transform;
 
-            leftUpperArm.transform.SetPositionAndRotation(uat.position, uat.rotation * Quaternion.Euler(0, 0, 90));
-            leftLowerArm.transform.SetPositionAndRotation(lat.position, lat.rotation * Quaternion.Euler(0, 0, 90));
-            leftHand.transform.SetPositionAndRotation(ht.position, ht.rotation * Quaternion.Euler(0, 0, 90));
+            var rot = Quaternion.Euler(0, 0, 90);
+            leftUpperArm.transform.SetPositionAndRotation(uat.position, uat.rotation * rot);
+            leftLowerArm.transform.SetPositionAndRotation(lat.position, lat.rotation * rot);
+            leftHand.transform.SetPositionAndRotation(ht.position, ht.rotation * rot);
 
             // leftUpperArm.transform.rotation = uat.rotation * Quaternion.Euler(0, 0, 90);
             // leftLowerArm.transform.rotation = lat.rotation * Quaternion.Euler(0, 0, 90);

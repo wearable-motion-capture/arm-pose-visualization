@@ -133,6 +133,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
   m_PrefabInstance: {fileID: 1067864699}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &558917800 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -2534748859332361059, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
+  m_PrefabInstance: {fileID: 1691649448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &785076245
 GameObject:
   m_ObjectHideFlags: 0
@@ -167,7 +172,7 @@ MonoBehaviour:
   mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
   mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
   upperArm: {fileID: 896778951}
-  port: 50005
+  port: 50003
   leftHandMode: 1
 --- !u!114 &785076248
 MonoBehaviour:
@@ -217,6 +222,11 @@ MonoBehaviour:
   leftUpperArm: {fileID: 896778951}
   leftLowerArm: {fileID: 1782585432}
   leftHand: {fileID: 2118452084}
+--- !u!1 &878265223 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2052070956754564173, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
+  m_PrefabInstance: {fileID: 1691649448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &893390074
 GameObject:
   m_ObjectHideFlags: 0
@@ -479,6 +489,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
+--- !u!1 &1069846793 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8076984302875594023, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
+  m_PrefabInstance: {fileID: 1691649448}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1117893799 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: a3868486fc3a5d9c1a38084b03ee60d3, type: 3}
@@ -504,15 +519,16 @@ GameObject:
   m_Component:
   - component: {fileID: 1336340264}
   - component: {fileID: 1336340265}
+  - component: {fileID: 1336340269}
   - component: {fileID: 1336340267}
-  - component: {fileID: 1336340266}
+  - component: {fileID: 1336340268}
   m_Layer: 0
   m_Name: SwController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1336340264
 Transform:
   m_ObjectHideFlags: 0
@@ -541,26 +557,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38ced87d890ee00ba85fadd0a310a0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skeletonMapper: {fileID: 1336340266}
+  skeletonMapper: {fileID: 1336340268}
   swListener:
   - {fileID: 1336340267}
---- !u!114 &1336340266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1336340261}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 624c659a37d2551e8b08ee03012314a3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  destGameObject: {fileID: 1117893799}
-  motiveSkeletonXML: {fileID: 4900000, guid: 35b9f827701602b1caf9ec99bc504b29, type: 3}
-  leftUpperArm: {fileID: 1711056790}
-  leftLowerArm: {fileID: 2139052010}
-  leftHand: {fileID: 1177578573}
+  - {fileID: 1336340269}
 --- !u!114 &1336340267
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -578,6 +578,43 @@ MonoBehaviour:
   upperArm: {fileID: 1711056790}
   port: 50003
   leftHandMode: 1
+--- !u!114 &1336340268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336340261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b1e142b21f7372499abccd066d7f9fb1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  destGameObject: {fileID: 1117893799}
+  motiveSkeletonXML: {fileID: 4900000, guid: 35b9f827701602b1caf9ec99bc504b29, type: 3}
+  leftUpperArm: {fileID: 1711056790}
+  leftLowerArm: {fileID: 2139052010}
+  leftHand: {fileID: 1177578573}
+  rightUpperArm: {fileID: 878265223}
+  rightLowerArm: {fileID: 1069846793}
+  rightHand: {fileID: 558917800}
+--- !u!114 &1336340269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1336340261}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48cf8beff0f6d85dfbf157773d963a6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mcPredMaterial: {fileID: 2100000, guid: ab5ac1b869f80b3a8b6bc568bad677fe, type: 2}
+  mcPredMesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+  upperArm: {fileID: 878265223}
+  port: 50004
+  leftHandMode: 0
 --- !u!1 &1607329434
 GameObject:
   m_ObjectHideFlags: 0
