@@ -107,27 +107,15 @@ public class DualAppListener : MonoBehaviour
 
         if (leftHandMode)
         {
-            boneMap["LeftHand"].transform.SetPositionAndRotation(
-                _handPos + uaPos, _handRot
-            );
-            boneMap["LeftLowerArm"].transform.SetPositionAndRotation(
-                _larmPos + uaPos, _larmRot
-            );
-            boneMap["LeftUpperArm"].transform.SetPositionAndRotation(
-                uaPos, _uarmRot
-            );
+            boneMap["LeftHand"].transform.SetPositionAndRotation(_handPos + uaPos, _handRot);
+            boneMap["LeftLowerArm"].transform.SetPositionAndRotation(_larmPos + uaPos, _larmRot);
+            boneMap["LeftUpperArm"].transform.SetPositionAndRotation(uaPos, _uarmRot);
         }
         else
         {
-            boneMap["RightHand"].transform.SetPositionAndRotation(
-                _handPos + uaPos, _handRot
-            );
-            boneMap["RightLowerArm"].transform.SetPositionAndRotation(
-                _larmPos + uaPos, _larmRot
-            );
-            boneMap["RightUpperArm"].transform.SetPositionAndRotation(
-                uaPos, _uarmRot
-            );
+            boneMap["RightHand"].transform.SetPositionAndRotation(_handPos + uaPos, _handRot);
+            boneMap["RightLowerArm"].transform.SetPositionAndRotation(_larmPos + uaPos, _larmRot);
+            boneMap["RightUpperArm"].transform.SetPositionAndRotation(uaPos, _uarmRot);
         }
 
 
