@@ -23,7 +23,7 @@ namespace SkeletonMapper
             var lht = BoneMap["LeftHand"].transform;
 
             // this check is only to make the default position prettier
-            if (luat.rotation != Quaternion.identity && llat.rotation != Quaternion.identity)
+            if (luat.localRotation != Quaternion.identity && llat.localRotation != Quaternion.identity)
             {
                 // Aligns arms with X axis. Negative for left, positive for right. This corresponds to the default T-pose,
                 // which is the reference frame for Motive rotations 
@@ -42,7 +42,7 @@ namespace SkeletonMapper
             var rlat = BoneMap["RightLowerArm"].transform;
             var rht = BoneMap["RightHand"].transform;
 
-            if (ruat.rotation != Quaternion.identity && rlat.rotation != Quaternion.identity)
+            if (ruat.localRotation != Quaternion.identity && rlat.localRotation != Quaternion.identity)
             {
                 // local coord system of joints is Xdown, Ybackward, Zright
                 var rightRot = Quaternion.Euler(0, 180, -90);

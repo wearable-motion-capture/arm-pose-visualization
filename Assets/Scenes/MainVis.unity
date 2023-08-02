@@ -450,7 +450,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   skeletonMapper: {fileID: 1336340268}
-  swListener:
+  listener:
   - {fileID: 1336340267}
 --- !u!114 &1336340267
 MonoBehaviour:
