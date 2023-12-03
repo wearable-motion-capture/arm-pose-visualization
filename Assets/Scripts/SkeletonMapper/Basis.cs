@@ -16,7 +16,8 @@ namespace SkeletonMapper
         protected GameObject RootObj;
 
         private string _skeletonName;
-
+        [SerializeField] private bool _posGizmos;
+        
         /**
         * Parse the input moCapSkeletonXML file and creates a Unity skeleton accordingly.
          * It parses the skeleton name, stored bone IDs, their hierarchy and offsets. The skeleton uses the public
@@ -71,7 +72,22 @@ namespace SkeletonMapper
 
                 // create a new object if it doesn't exist yet (might already exist in case we re-parse the XML)
                 if (!BoneMap.ContainsKey(mKey))
-                    BoneMap[mKey] = new GameObject(skeletonName + "_" + mKey);
+                {
+                    if (_posGizmos)
+                    {
+                        // show Gizmos only if the flag is true
+                        BoneMap[mKey] = GameObject.CreatePrimitive(PrimitiveType.Cube);
+                        BoneMap[mKey].name = skeletonName + "_" + mKey;
+                        BoneMap[mKey].transform.localScale = new Vector3(0.1f, 0.1f, 0.1f);
+                    }
+                    else
+                    {
+                        BoneMap[mKey] = new GameObject(skeletonName + "_" + mKey);
+                    }
+
+                }
+
+                // BoneMap[mKey] = new GameObject(skeletonName + "_" + mKey);
                 //the bone with parent 0 is the root object
                 BoneMap[mKey].transform.parent = bone.Item3 == "0"
                     ? RootObj.transform
