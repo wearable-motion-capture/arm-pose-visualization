@@ -4,7 +4,7 @@ merged.csv.meta
 predict_*
 probabilities_*
 .attach_pid27169
-
+*.meta
 
 # This .gitignore file should be placed at the root of your Unity project directory
 #
